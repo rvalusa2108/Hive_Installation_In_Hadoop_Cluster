@@ -43,7 +43,7 @@ Saving to: ‘apache-hive-2.3.9-bin.tar.gz’
 
 apache-hive-2.3.9-bin.tar.gz              100%[==================================================================================&gt;] 272.91M  3.22MB/s    in 87s
 
-2021-07-28 18:32:40 (3.15 MB/s) - ‘apache-hive-2.3.9-bin.tar.gz’ saved [286170958/286170958]    
+2021-07-28 18:32:40 (3.15 MB/s) - ‘apache-hive-2.3.9-bin.tar.gz’ saved [286170958/286170958]
 [hdpusr@masternode downloads]$ ls -ltrah
 total 966M
 -rw-r--r--. 1 root    root    125M Jul 13  2020 scala-2.12.12.rpm
