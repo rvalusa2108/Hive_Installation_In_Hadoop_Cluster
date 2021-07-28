@@ -1261,17 +1261,14 @@ drwxr-xr-x.  9 hdpusr hadoop  207 Jul 28 18:59 ..
 </code></pre>
 <h2 id="setup-hive-environment-variables">Setup Hive Environment Variables</h2>
 <p>Along with the Hadoop environment variables, set the Hive env variables in the .bashrc file of the user who owns the Hadoop installation ie., hdpusr in my cluster.</p>
-<pre><code>#.bashrc
-
+<pre><code>#.bashrc    
 #Source global definitions
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
-fi
-
+fi    
 #User specific environment
 PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-export PATH
-
+export PATH    
 #==================================================    
 #HADOOP VARIABLES
 export HADOOP_HOME=/apps/hadoop
