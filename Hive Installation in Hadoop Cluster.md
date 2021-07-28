@@ -1260,4 +1260,50 @@ drwxr-xr-x.  7 hdpusr hadoop   68 Jul 28 18:50 hcatalog
 drwxr-xr-x.  9 hdpusr hadoop  207 Jul 28 18:59 ..
 </code></pre>
 <h2 id="setup-hive-environment-variables">Setup Hive Environment Variables</h2>
+<p>Along with the Hadoop environment variables, set the Hive env variables in the .bashrc file of the user who owns the Hadoop installation ie., hdpusr in my cluster.</p>
+<pre><code># .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# User specific environment
+PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+export PATH
+
+#==================================================
+
+# HADOOP VARIABLES
+export HADOOP_HOME=/apps/hadoop
+export JAVA_HOME=/usr/lib/jvm/jdk
+export HADOOP_INSTALL=/apps/hadoop
+export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_HOME=$HADOOP_INSTALL
+export HADOOP_HDFS_HOME=$HADOOP_INSTALL
+export YARN_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib/native"
+export HADOOP_CONF_DIR=$HADOOP_INSTALL/etc/hadoop
+
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HADOOP_INSTALL/lib/native
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_INSTALL/bin:$HADOOP_INSTALL/sbin
+#==================================================
+
+#SPARK VARIABLES
+export YARN_CONF_DIR=$HADOOP_INSTALL/etc/hadoop
+export SPARK_HOME=/apps/spark
+export PATH=$PATH:$SPARK_HOME/bin
+export PYSPARK_PYTHON=/usr/bin/python3
+
+export PATH=$PATH:/usr/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin
+#==================================================
+
+# HIVE VARIABLES
+export HIVE_HOME=/apps/hive
+
+export PATH=$PATH:$HIVE_HOME/bin
+#==================================================
+</code></pre>
 
