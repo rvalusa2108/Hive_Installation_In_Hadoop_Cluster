@@ -1281,8 +1281,6 @@ export YARN_HOME=$HADOOP_INSTALL
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib/native"
 export HADOOP_CONF_DIR=$HADOOP_INSTALL/etc/hadoop
-
-
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HADOOP_INSTALL/lib/native
 export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_INSTALL/bin:$HADOOP_INSTALL/sbin
 #==================================================    
@@ -1291,12 +1289,10 @@ export YARN_CONF_DIR=$HADOOP_INSTALL/etc/hadoop
 export SPARK_HOME=/apps/spark
 export PATH=$PATH:$SPARK_HOME/bin
 export PYSPARK_PYTHON=/usr/bin/python3
-
 export PATH=$PATH:/usr/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin
 #==================================================    
 #HIVE VARIABLES
-export HIVE_HOME=/apps/hive
-
+export HIVE_HOME=/apps/hive    
 export PATH=$PATH:$HIVE_HOME/bin
 #==================================================
 </code></pre>
