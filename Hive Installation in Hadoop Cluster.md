@@ -39,10 +39,9 @@ Resolving www.strategylions.com.au (www.strategylions.com.au)... 172.67.141.54, 
 Connecting to www.strategylions.com.au (www.strategylions.com.au)|172.67.141.54|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 286170958 (273M) [application/x-gzip]
-Saving to: ‘apache-hive-2.3.9-bin.tar.gz’
-
-apache-hive-2.3.9-bin.tar.gz              100%[==================================================================================&gt;] 272.91M  3.22MB/s    in 87s
-
+Saving to: ‘apache-hive-2.3.9-bin.tar.gz’    
+apache-hive-2.3.9-bin.tar.gz
+100%[==================================================================================&gt;] 272.91M  3.22MB/s    in 87s    
 2021-07-28 18:32:40 (3.15 MB/s) - ‘apache-hive-2.3.9-bin.tar.gz’ saved [286170958/286170958]
 [hdpusr@masternode downloads]$ ls -ltrah
 total 966M
