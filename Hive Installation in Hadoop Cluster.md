@@ -1211,7 +1211,7 @@ apache-hive-2.3.9-bin/hcatalog/sbin/update-hcatalog-env.sh
 apache-hive-2.3.9-bin/hcatalog/sbin/webhcat_config.sh
 apache-hive-2.3.9-bin/hcatalog/sbin/webhcat_server.sh
 </code></pre>
-<p>Create a symlink to unpacked hive binary package folder to /apps/hive folder which helps in upgrading the hive without any change to the configured environment variables.</p>
+<p>Create a symbolic soft link to unpacked hive binary package folder to /apps/hive folder which helps in upgrading the hive without any change to the configured environment variables.</p>
 <pre><code>[hdpusr@masternode apps]$ pwd
 /apps
 [hdpusr@masternode apps]$ ls -ltrah
