@@ -1263,7 +1263,7 @@ drwxr-xr-x.  9 hdpusr hadoop  207 Jul 28 18:59 ..
 <p>Along with the Hadoop environment variables, set the Hive env variables in the .bashrc file of the user who owns the Hadoop installation ie., hdpusr in my cluster.</p>
 <pre><code>#.bashrc
 
-# Source global definitions
+#Source global definitions
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
