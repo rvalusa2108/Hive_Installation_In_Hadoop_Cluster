@@ -1318,4 +1318,75 @@ Starting secondary namenodes [0.0.0.0]
 [hdpusr@masternode ~]$ hdfs dfs -chmod g+w /user/hive/warehouse
 </code></pre>
 <h2 id="install-mysql-server">Install MySQL Server</h2>
+<p>To install MySQL server run the below yum install command using root user</p>
+<pre><code>[root@masternode ~]# yum install mysql-server
+Last metadata expiration check: 1:38:08 ago on Thu 29 Jul 2021 12:34:34 AM IST.
+Dependencies resolved.
+=============================================================================================================================================================
+ Package                                     Architecture            Version                                                Repository                  Size
+=============================================================================================================================================================
+Installing:
+ mysql-server                                x86_64                  8.0.21-1.module_el8.2.0+493+63b41e36                   AppStream                   22 M
+Installing dependencies:
+ mariadb-connector-c-config                  noarch                  3.1.11-2.el8_3                                         AppStream                   15 k
+ mecab                                       x86_64                  0.996-1.module_el8.2.0+493+63b41e36.9                  AppStream                  393 k
+ mysql                                       x86_64                  8.0.21-1.module_el8.2.0+493+63b41e36                   AppStream                   12 M
+ mysql-common                                x86_64                  8.0.21-1.module_el8.2.0+493+63b41e36                   AppStream                  148 k
+ mysql-errmsg                                x86_64                  8.0.21-1.module_el8.2.0+493+63b41e36                   AppStream                  581 k
+ protobuf-lite                               x86_64                  3.5.0-13.el8                                           AppStream                  149 k
+Enabling module streams:
+ mysql                                                               8.0
+
+Transaction Summary
+=============================================================================================================================================================
+Install  7 Packages
+
+Total download size: 35 M
+Installed size: 182 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/7): mariadb-connector-c-config-3.1.11-2.el8_3.noarch.rpm                                                                   90 kB/s |  15 kB     00:00
+(2/7): mysql-common-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64.rpm                                                          1.0 MB/s | 148 kB     00:00
+(3/7): mysql-errmsg-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64.rpm                                                          1.6 MB/s | 581 kB     00:00
+(4/7): mecab-0.996-1.module_el8.2.0+493+63b41e36.9.x86_64.rpm                                                                592 kB/s | 393 kB     00:00
+(5/7): protobuf-lite-3.5.0-13.el8.x86_64.rpm                                                                                 547 kB/s | 149 kB     00:00
+(6/7): mysql-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64.rpm                                                                 1.0 MB/s |  12 MB     00:11
+(7/7): mysql-server-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64.rpm                                                          1.7 MB/s |  22 MB     00:13
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                        2.4 MB/s |  35 MB     00:14
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                     1/1
+  Installing       : mariadb-connector-c-config-3.1.11-2.el8_3.noarch                                                                                    1/7
+  Installing       : mysql-common-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            2/7
+  Installing       : mysql-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                                   3/7
+  Installing       : mysql-errmsg-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            4/7
+  Installing       : protobuf-lite-3.5.0-13.el8.x86_64                                                                                                   5/7
+  Installing       : mecab-0.996-1.module_el8.2.0+493+63b41e36.9.x86_64                                                                                  6/7
+  Running scriptlet: mecab-0.996-1.module_el8.2.0+493+63b41e36.9.x86_64                                                                                  6/7
+  Running scriptlet: mysql-server-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            7/7
+  Installing       : mysql-server-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            7/7
+  Running scriptlet: mysql-server-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            7/7
+ValueError: File context for /var/log/mysql(/.*)? already defined
+
+  Verifying        : mariadb-connector-c-config-3.1.11-2.el8_3.noarch                                                                                    1/7
+  Verifying        : mecab-0.996-1.module_el8.2.0+493+63b41e36.9.x86_64                                                                                  2/7
+  Verifying        : mysql-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                                   3/7
+  Verifying        : mysql-common-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            4/7
+  Verifying        : mysql-errmsg-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            5/7
+  Verifying        : mysql-server-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            6/7
+  Verifying        : protobuf-lite-3.5.0-13.el8.x86_64                                                                                                   7/7
+Installed products updated.
+
+Installed:
+  mariadb-connector-c-config-3.1.11-2.el8_3.noarch                              mecab-0.996-1.module_el8.2.0+493+63b41e36.9.x86_64
+  mysql-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                             mysql-common-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64
+  mysql-errmsg-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                      mysql-server-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64
+  protobuf-lite-3.5.0-13.el8.x86_64
+
+Complete!
+</code></pre>
 
