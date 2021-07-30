@@ -1336,6 +1336,7 @@ Installing dependencies:
  protobuf-lite                               x86_64                  3.5.0-13.el8                                           AppStream                  149 k
 Enabling module streams:
  mysql                                                               8.0
+
 Transaction Summary
 =============================================================================================================================================================
 Install  7 Packages
@@ -1370,7 +1371,6 @@ Running transaction
   Installing       : mysql-server-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            7/7
   Running scriptlet: mysql-server-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            7/7
 ValueError: File context for /var/log/mysql(/.*)? already defined
-
   Verifying        : mariadb-connector-c-config-3.1.11-2.el8_3.noarch                                                                                    1/7
   Verifying        : mecab-0.996-1.module_el8.2.0+493+63b41e36.9.x86_64                                                                                  2/7
   Verifying        : mysql-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                                   3/7
