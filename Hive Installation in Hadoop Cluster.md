@@ -1336,7 +1336,6 @@ Installing dependencies:
  protobuf-lite                               x86_64                  3.5.0-13.el8                                           AppStream                  149 k
 Enabling module streams:
  mysql                                                               8.0
-
 Transaction Summary
 =============================================================================================================================================================
 Install  7 Packages
