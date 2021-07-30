@@ -1403,7 +1403,6 @@ Created symlink /etc/systemd/system/multi-user.target.wants/mysqld.service → /
    Memory: 336.2M
    CGroup: /system.slice/mysqld.service
            └─115711 /usr/libexec/mysqld --basedir=/usr
-
 Jul 29 02:26:26 masternode systemd[1]: Starting MySQL 8.0 database server...
 Jul 29 02:26:27 masternode systemd[1]: Started MySQL 8.0 database server.
 </code></pre>
