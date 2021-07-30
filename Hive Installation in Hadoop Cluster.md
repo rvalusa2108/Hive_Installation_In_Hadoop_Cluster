@@ -1336,11 +1336,9 @@ Installing dependencies:
  protobuf-lite                               x86_64                  3.5.0-13.el8                                           AppStream                  149 k
 Enabling module streams:
  mysql                                                               8.0
-
 Transaction Summary
 =============================================================================================================================================================
 Install  7 Packages
-
 Total download size: 35 M
 Installed size: 182 M
 Is this ok [y/N]: y
@@ -1379,13 +1377,11 @@ ValueError: File context for /var/log/mysql(/.*)? already defined
   Verifying        : mysql-server-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                                                                            6/7
   Verifying        : protobuf-lite-3.5.0-13.el8.x86_64                                                                                                   7/7
 Installed products updated.
-
 Installed:
   mariadb-connector-c-config-3.1.11-2.el8_3.noarch                              mecab-0.996-1.module_el8.2.0+493+63b41e36.9.x86_64
   mysql-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                             mysql-common-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64
   mysql-errmsg-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64                      mysql-server-8.0.21-1.module_el8.2.0+493+63b41e36.x86_64
   protobuf-lite-3.5.0-13.el8.x86_64
-
 Complete!
 </code></pre>
 
