@@ -1317,4 +1317,5 @@ Starting secondary namenodes [0.0.0.0]
 [hdpusr@masternode ~]$ hdfs dfs -chmod g+w /tmp
 [hdpusr@masternode ~]$ hdfs dfs -chmod g+w /user/hive/warehouse
 </code></pre>
+<h2 id="install-mysql-server">Install MySQL Server</h2>
 
