@@ -8,7 +8,7 @@
 <ol>
 <li>Download Hive Binary Package</li>
 <li>Setup Hive Environment Variables</li>
-<li>Setup Hive HDFS Folders</li>
+<li>Setup Hive HDFS Folders in Hadoop FileSystem</li>
 <li>Install MySQL Server</li>
 <li>Configure Hive Metastore</li>
 <li>Configure Hive File hive-site.xml</li>
@@ -1295,5 +1295,21 @@ export PATH=$PATH:/usr/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin
 export HIVE_HOME=/apps/hive    
 export PATH=$PATH:$HIVE_HOME/bin
 #==================================================
+</code></pre>
+<h2 id="setup-hive-hdfs-folders-in-hadoop-filesystem">Setup Hive HDFS Folders in Hadoop FileSystem</h2>
+<p>Hive uses Hadoop hdfs to store the tmp files and metastore related files in warehouse directory. So we need to create the below folders in hdfs for Hive to work properly and leverage them.</p>
+<p>Start hadoop services using <a href="http://start-dfs.sh">start-dfs.sh</a> as below and check the services using jps (Java Virtual Machine Process Status) tool.</p>
+<pre><code>[hdpusr@masternode ~]$ start-dfs.sh
+Starting namenodes on [masternode]
+masternode: starting namenode, logging to /apps/hadoop-2.7.7/logs/hadoop-hdpusr-namenode-masternode.out
+192.168.1.201: starting datanode, logging to /apps/hadoop-2.7.7/logs/hadoop-hdpusr-datanode-executornode1.out
+192.168.1.200: starting datanode, logging to /apps/hadoop-2.7.7/logs/hadoop-hdpusr-datanode-masternode.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /apps/hadoop-2.7.7/logs/hadoop-hdpusr-secondarynamenode-masternode.out
+[hdpusr@masternode ~]$ jps
+55856 NameNode
+56017 DataNode
+56387 SecondaryNameNode
+59934 Jps
 </code></pre>
 
