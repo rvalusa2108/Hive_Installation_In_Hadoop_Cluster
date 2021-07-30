@@ -1297,7 +1297,6 @@ export PATH=$PATH:$HIVE_HOME/bin
 #==================================================
 </code></pre>
 <h2 id="setup-hive-hdfs-folders-in-hadoop-filesystem">Setup Hive HDFS Folders in Hadoop FileSystem</h2>
-<p>Hive uses Hadoop hdfs to store the tmp files and metastore related files in warehouse directory. So we need to create the below folders in hdfs for Hive to work properly and leverage them.</p>
 <p>Start hadoop services using <a href="http://start-dfs.sh">start-dfs.sh</a> as below and check the services using jps (Java Virtual Machine Process Status) tool.</p>
 <pre><code>[hdpusr@masternode ~]$ start-dfs.sh
 Starting namenodes on [masternode]
@@ -1311,5 +1310,11 @@ Starting secondary namenodes [0.0.0.0]
 56017 DataNode
 56387 SecondaryNameNode
 59934 Jps
+</code></pre>
+<p>Hive uses Hadoop hdfs to store the tmp files and metastore related files in warehouse directory. So we need to create the below folders in hdfs for Hive to work properly and leverage them.</p>
+<pre><code>[hdpusr@masternode ~]$ hdfs dfs -mkdir /tmp
+[hdpusr@masternode ~]$ hdfs dfs -mkdir -p /user/hive/warehouse
+[hdpusr@masternode ~]$ hdfs dfs -chmod g+w /tmp
+[hdpusr@masternode ~]$ hdfs dfs -chmod g+w /user/hive/warehouse
 </code></pre>
 
