@@ -1384,4 +1384,27 @@ Installed:
   protobuf-lite-3.5.0-13.el8.x86_64
 Complete!
 </code></pre>
+<p>Start MySQL deamon and enable it to run on machine boot automatically using systemctl utility.</p>
+<pre><code>[root@masternode ~]# ps -ef|grep mysql
+root      114710   81660  0 02:24 pts/0    00:00:00 grep --color=auto mysql
+[root@masternode ~]# systemctl start mysqld
+[root@masternode ~]# ps -ef|grep mysql
+mysql     115711       1 14 02:26 ?        00:00:01 /usr/libexec/mysqld --basedir=/usr
+root      115836   81660  0 02:26 pts/0    00:00:00 grep --color=auto mysql
+[root@masternode ~]# systemctl enable mysqld
+Created symlink /etc/systemd/system/multi-user.target.wants/mysqld.service → /usr/lib/systemd/system/mysqld.service.
+[root@masternode ~]# systemctl status mysqld
+● mysqld.service - MySQL 8.0 database server
+   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)
+   Active: active (running) since Thu 2021-07-29 02:26:27 IST; 3min 13s ago
+ Main PID: 115711 (mysqld)
+   Status: "Server is operational"
+    Tasks: 38 (limit: 27385)
+   Memory: 336.2M
+   CGroup: /system.slice/mysqld.service
+           └─115711 /usr/libexec/mysqld --basedir=/usr
+
+Jul 29 02:26:26 masternode systemd[1]: Starting MySQL 8.0 database server...
+Jul 29 02:26:27 masternode systemd[1]: Started MySQL 8.0 database server.
+</code></pre>
 
