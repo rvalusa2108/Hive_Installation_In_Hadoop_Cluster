@@ -1478,4 +1478,41 @@ drwxrwxrwx. 2 root    root     204 Jul 29 04:11 .
 [hdpusr@masternode downloads]$ ls -ltrah $HIVE_HOME/lib/mysql-connector*
 -rw-r--r--. 1 hdpusr hadoop 2.3M Jun 16  2020 /apps/hive/lib/mysql-connector-java-8.0.21.jar
 </code></pre>
+<h2 id="configure-hive-file-hive-site.xml">Configure Hive File hive-site.xml</h2>
+<p>Create required configuration files as below</p>
+<pre><code>[hdpusr@masternode conf]$ pwd
+/apps/hive/conf
+[hdpusr@masternode conf]$ ls -ltrah
+total 292K
+-rw-r--r--.  1 hdpusr hadoop 2.6K Jun  2 02:13 parquet-logging.properties
+-rw-r--r--.  1 hdpusr hadoop 2.1K Jun  2 02:13 ivysettings.xml
+-rw-r--r--.  1 hdpusr hadoop 2.9K Jun  2 02:13 hive-log4j2.properties.template
+-rw-r--r--.  1 hdpusr hadoop 2.4K Jun  2 02:13 hive-env.sh.template
+-rw-r--r--.  1 hdpusr hadoop 1.6K Jun  2 02:13 beeline-log4j2.properties.template
+-rw-r--r--.  1 hdpusr hadoop 6.9K Jun  2 02:13 llap-daemon-log4j2.properties.template
+-rw-r--r--.  1 hdpusr hadoop 2.7K Jun  2 02:13 llap-cli-log4j2.properties.template
+-rw-r--r--.  1 hdpusr hadoop 2.3K Jun  2 02:13 hive-exec-log4j2.properties.template
+-rw-r--r--.  1 hdpusr hadoop 252K Jun  2 02:24 hive-default.xml.template
+drwxr-xr-x. 10 hdpusr hadoop  184 Jul 28 18:50 ..
+drwxr-xr-x.  2 hdpusr hadoop 4.0K Jul 28 18:50 .
+[hdpusr@masternode conf]$ cp hive-default.xml.template hive-site.xml
+[hdpusr@masternode conf]$ cp hive-exec-log4j2.properties.template hive-execlog4j2.properties
+[hdpusr@masternode conf]$ cp hive-log4j2.properties.template hive-log4j2.properties
+[hdpusr@masternode conf]$ ls -ltrah
+total 552K
+-rw-r--r--.  1 hdpusr hadoop 2.6K Jun  2 02:13 parquet-logging.properties
+-rw-r--r--.  1 hdpusr hadoop 2.1K Jun  2 02:13 ivysettings.xml
+-rw-r--r--.  1 hdpusr hadoop 2.9K Jun  2 02:13 hive-log4j2.properties.template
+-rw-r--r--.  1 hdpusr hadoop 2.4K Jun  2 02:13 hive-env.sh.template
+-rw-r--r--.  1 hdpusr hadoop 1.6K Jun  2 02:13 beeline-log4j2.properties.template
+-rw-r--r--.  1 hdpusr hadoop 6.9K Jun  2 02:13 llap-daemon-log4j2.properties.template
+-rw-r--r--.  1 hdpusr hadoop 2.7K Jun  2 02:13 llap-cli-log4j2.properties.template
+-rw-r--r--.  1 hdpusr hadoop 2.3K Jun  2 02:13 hive-exec-log4j2.properties.template
+-rw-r--r--.  1 hdpusr hadoop 252K Jun  2 02:24 hive-default.xml.template
+drwxr-xr-x. 10 hdpusr hadoop  184 Jul 28 18:50 ..
+-rw-r--r--.  1 hdpusr hadoop 252K Jul 29 04:50 hive-site.xml
+-rw-r--r--.  1 hdpusr hadoop 2.3K Jul 29 04:51 hive-execlog4j2.properties
+-rw-r--r--.  1 hdpusr hadoop 2.9K Jul 29 04:52 hive-log4j2.properties
+drwxr-xr-x.  2 hdpusr hadoop 4.0K Jul 29 04:52 .
+</code></pre>
 
