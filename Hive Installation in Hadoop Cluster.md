@@ -1701,7 +1701,6 @@ mysql&gt; show tables;
 <p>Start the metastore and hiveserver2 services using the below commands.</p>
 <pre><code>$HIVE_HOME/bin/hive --service metastore &amp;  
 $HIVE_HOME/bin/hive --service hiveserver2 &amp;
-
 [hdpusr@masternode conf]$ $HIVE_HOME/bin/hive --service metastore &amp;
 [1] 197101
 2021-07-29 06:43:50: Starting Hive Metastore Server
