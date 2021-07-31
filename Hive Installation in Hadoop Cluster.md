@@ -1515,8 +1515,7 @@ drwxr-xr-x. 10 hdpusr hadoop  184 Jul 28 18:50 ..
 -rw-r--r--.  1 hdpusr hadoop 2.9K Jul 29 04:52 hive-log4j2.properties
 drwxr-xr-x.  2 hdpusr hadoop 4.0K Jul 29 04:52 .
 </code></pre>
-<p>Modify $HIVE_HOME/conf/hive-site.xml, which has some important<br>
-parameters to set:<br>
+<p>Modify $HIVE_HOME/conf/hive-site.xml, which has some important parameters to set:<br>
 hive.metastore.warehourse.dir: This is the path to the Hive warehouse location. By default, it is at /user/hive/warehouse.<br>
 hive.exec.scratchdir: This is the temporary data file location. By default, it is at /tmp/hive-${<a href="http://user.name">user.name</a>}’.</p>
 
