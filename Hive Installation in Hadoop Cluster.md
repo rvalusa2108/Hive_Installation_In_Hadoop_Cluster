@@ -1754,4 +1754,43 @@ Caused by: java.net.URISyntaxException: Relative path in absolute URI: ${system:
         at org.apache.hadoop.fs.Path.initialize(Path.java:202)
         ... 12 more
 </code></pre>
+<p>To fix the above issue, add the below properties in hive-site.xml file at the begining of the file.</p>
+<pre><code>  &lt;property&gt;
+    &lt;name&gt;system:java.io.tmpdir&lt;/name&gt;
+    &lt;value&gt;/tmp/hive/java&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;system:user.name&lt;/name&gt;
+    &lt;value&gt;${user.name}&lt;/value&gt;
+  &lt;/property&gt;
+</code></pre>
+<p>And then kill the metastore and hiveserver2 processes and start them back again using the above mentioned commands, and try launching the hive cli.</p>
+<pre><code>[hdpusr@masternode conf]$ $HIVE_HOME/bin/hive --service metastore &amp;
+[1] 211872
+[hdpusr@masternode conf]$ 2021-07-29 07:24:02: Starting Hive Metastore Server
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/apps/apache-hive-2.3.9-bin/lib/log4j-slf4j-impl-2.6.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/apps/hadoop-2.7.7/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+[hdpusr@masternode conf]$ $HIVE_HOME/bin/hive --service hiveserver2 &amp;
+[2] 212135
+[hdpusr@masternode conf]$ which: no hbase in (/home/hdpusr/.local/bin:/home/hdpusr/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/jvm/jdk/bin:/apps/hadoop/bin:/apps/hadoop/sbin:/apps/spark/bin:/usr/bin:/apps/spark/bin:/apps/spark/sbin:/apps/hive/bin)
+2021-07-29 07:24:34: Starting HiveServer2
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/apps/apache-hive-2.3.9-bin/lib/log4j-slf4j-impl-2.6.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/apps/hadoop-2.7.7/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+[hdpusr@masternode conf]$ hive
+which: no hbase in (/home/hdpusr/.local/bin:/home/hdpusr/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/jvm/jdk/bin:/apps/hadoop/bin:/apps/hadoop/sbin:/apps/spark/bin:/usr/bin:/apps/spark/bin:/apps/spark/sbin:/apps/hive/bin)
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/apps/apache-hive-2.3.9-bin/lib/log4j-slf4j-impl-2.6.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/apps/hadoop-2.7.7/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Logging initialized using configuration in file:/apps/apache-hive-2.3.9-bin/conf/hive-log4j2.properties Async: true
+Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+hive&gt;
+</code></pre>
 
