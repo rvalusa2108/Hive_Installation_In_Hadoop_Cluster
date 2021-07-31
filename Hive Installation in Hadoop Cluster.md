@@ -1586,4 +1586,25 @@ hive.exec.scratchdir: This is the temporary data file location. By default, it i
   ...
 </code></pre>
 <h2 id="initialize-hive-metastore-database-structure">Initialize Hive Metastore Database Structure</h2>
+<p>Now we need to run schematool to setup metastore for Hive. The command syntax looks like the following:</p>
+<pre><code>$HIVE_HOME/bin/schematool -dbType &lt;db type&gt; -initSchema
+</code></pre>
+<p>For argument <strong>dbType</strong>, it can be any of the following values: derby|mysql|postgres|oracle|mssql</p>
+<p>Let’s now run the following command in Bash to initiate database schema using dbtype as mysql</p>
+<pre><code>$HIVE_HOME/bin/schematool -dbType mysql -initSchema
+
+[hdpusr@masternode conf]$ $HIVE_HOME/bin/schematool -dbType mysql -initSchema
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/apps/apache-hive-2.3.9-bin/lib/log4j-slf4j-impl-2.6.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/apps/hadoop-2.7.7/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Metastore connection URL:        jdbc:mysql://localhost/hive_metastore?createDatabaseIfNotExist=true
+Metastore Connection Driver :    com.mysql.cj.jdbc.Driver
+Metastore connection User:       hive
+Starting metastore schema initialization to 2.3.0
+Initialization script hive-schema-2.3.0.mysql.sql
+Initialization script completed
+schemaTool completed
+</code></pre>
 
