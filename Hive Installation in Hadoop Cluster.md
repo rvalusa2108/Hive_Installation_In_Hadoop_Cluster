@@ -1518,4 +1518,20 @@ drwxr-xr-x.  2 hdpusr hadoop 4.0K Jul 29 04:52 .
 <p>Modify $HIVE_HOME/conf/hive-site.xml, which has some important parameters to set:</p>
 <p>hive.metastore.warehourse.dir: This is the path to the Hive warehouse location. By default, it is at /user/hive/warehouse.<br>
 hive.exec.scratchdir: This is the temporary data file location. By default, it is at /tmp/hive-${<a href="http://user.name">user.name</a>}’.</p>
+<pre><code>  &lt;property&gt;
+    &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;
+    &lt;value&gt;/user/hive/warehouse&lt;/value&gt;
+    &lt;description&gt;location of default database for the warehouse&lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hive.exec.scratchdir&lt;/name&gt;
+    &lt;value&gt;/tmp/hive&lt;/value&gt;
+    &lt;description&gt;HDFS root scratch dir for Hive jobs which gets created with write all (733) permission. For each connecting user, an HDFS scratch dir: ${hive.exec.scratchdir}/&amp;lt;username&amp;gt; is created, with ${hive.scratch.dir.permission}.&lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hive.scratch.dir.permission&lt;/name&gt;
+    &lt;value&gt;700&lt;/value&gt;
+    &lt;description&gt;The permission for the user specific scratch directories that get created.&lt;/description&gt;
+  &lt;/property&gt;
+</code></pre>
 
