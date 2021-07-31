@@ -1519,6 +1519,7 @@ drwxr-xr-x.  2 hdpusr hadoop 4.0K Jul 29 04:52 .
 <p>hive.metastore.warehourse.dir: This is the path to the Hive warehouse location. By default, it is at /user/hive/warehouse.<br>
 hive.exec.scratchdir: This is the temporary data file location. By default, it is at /tmp/hive-${<a href="http://user.name">user.name</a>}’.</p>
 <pre><code>  ...
+  ...
   &lt;property&gt;
     &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;
     &lt;value&gt;/user/hive/warehouse&lt;/value&gt;
@@ -1534,6 +1535,7 @@ hive.exec.scratchdir: This is the temporary data file location. By default, it i
     &lt;value&gt;700&lt;/value&gt;
     &lt;description&gt;The permission for the user specific scratch directories that get created.&lt;/description&gt;
   &lt;/property&gt;
+  ...
   ...
 </code></pre>
 
