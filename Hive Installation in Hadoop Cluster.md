@@ -1448,4 +1448,34 @@ mysql&gt; show databases;
 5 rows in set (0.00 sec)
 </code></pre>
 <h2 id="configure-hive-metastore">Configure Hive Metastore</h2>
+<p>To configure the Hive remote metastore in MySQL, we need the mysql jdbc connector jar file. The compatiable version of jdbc connector can be downloaded from Maven central repo that works with the MySQL DB version installed.<br>
+Find the MySQL DB version by running the below command.</p>
+<pre><code>[root@masternode ~]# mysql -V
+mysql  Ver 8.0.21 for Linux on x86_64 (Source distribution)
+</code></pre>
+<p>The compatible jdbc driver connector can be downloaded from the below url and move the same into Hive lib directory<br>
+<a href="https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.21/mysql-connector-java-8.0.21.jar">https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.21/mysql-connector-java-8.0.21.jar</a></p>
+<pre><code>[hdpusr@masternode downloads]$ wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.21/mysql-connector-java-8.0.21.jar
+--2021-07-29 04:11:09--  https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.21/mysql-connector-java-8.0.21.jar
+Resolving repo1.maven.org (repo1.maven.org)... 151.101.52.209
+Connecting to repo1.maven.org (repo1.maven.org)|151.101.52.209|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2397321 (2.3M) [application/java-archive]
+Saving to: ‘mysql-connector-java-8.0.21.jar’
+mysql-connector-java-8.0.21.jar         100%[============================================================================&gt;]   2.29M   162KB/s    in 11s
+2021-07-29 04:11:22 (210 KB/s) - ‘mysql-connector-java-8.0.21.jar’ saved [2397321/2397321]
+[hdpusr@masternode downloads]$ ls -ltrah
+total 968M
+-rw-r--r--. 1 hdpusr  hadoop  2.3M Jun 16  2020 mysql-connector-java-8.0.21.jar
+-rw-r--r--. 1 root    root    125M Jul 13  2020 scala-2.12.12.rpm
+-rw-r--r--. 1 hdpusr  hadoop  223M Sep  8  2020 spark-2.4.7-bin-hadoop2.7.tgz
+-rw-rw-r--. 1 rvalusa rvalusa 137M Dec  2  2020 jdk-8u271-linux-x64.tar.gz
+-rw-r--r--. 1 hdpusr  hadoop  209M Dec  2  2020 hadoop-2.7.7.tar.gz
+-rw-r--r--. 1 hdpusr  hadoop  273M Jun 10 00:00 apache-hive-2.3.9-bin.tar.gz
+drwxr-xr-x. 9 hdpusr  hadoop   207 Jul 28 18:59 ..
+drwxrwxrwx. 2 root    root     204 Jul 29 04:11 .
+[hdpusr@masternode downloads]$ mv mysql-connector-java-8.0.21.jar $HIVE_HOME/lib
+[hdpusr@masternode downloads]$ ls -ltrah $HIVE_HOME/lib/mysql-connector*
+-rw-r--r--. 1 hdpusr hadoop 2.3M Jun 16  2020 /apps/hive/lib/mysql-connector-java-8.0.21.jar
+</code></pre>
 
