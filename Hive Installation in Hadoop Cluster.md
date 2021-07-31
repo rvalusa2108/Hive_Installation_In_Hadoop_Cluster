@@ -1547,4 +1547,42 @@ hive.exec.scratchdir: This is the temporary data file location. By default, it i
 <li>javax.jdo.option.ConnectionPassword: This    is the password used to access the database - <strong>hive</strong></li>
 <li>hive.metastore.uris: <strong>thrift://127.0.0.1:9083</strong></li>
 </ul>
+<p>hive-site.xml configuration changes for the above parameters look like below</p>
+<pre><code>  ...
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;
+    &lt;!-- &lt;value&gt;jdbc:derby:;databaseName=metastore_db;create=true&lt;/value&gt; --&gt;
+    &lt;value&gt;jdbc:mysql://localhost/hive_metastore?createDatabaseIfNotExist=true&lt;/value&gt;
+    &lt;description&gt;
+      JDBC connect string for a JDBC metastore.
+      To use SSL to encrypt/authenticate the connection, provide database-specific SSL flag in the connection URL.
+      For example, jdbc:postgresql://myhost/db?ssl=true for postgres database.
+    &lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;
+    &lt;!--&lt;value&gt;org.apache.derby.jdbc.EmbeddedDriver&lt;/value&gt;--&gt;
+    &lt;value&gt;com.mysql.cj.jdbc.Driver&lt;/value&gt;
+    &lt;description&gt;Driver class name for a JDBC metastore&lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;
+    &lt;!--&lt;value&gt;APP&lt;/value&gt;--&gt;
+    &lt;value&gt;hive&lt;/value&gt;
+    &lt;description&gt;Username to use against metastore database&lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;
+    &lt;!--&lt;value&gt;mine&lt;/value&gt;--&gt;
+    &lt;value&gt;hive&lt;/value&gt;
+    &lt;description&gt;password to use against metastore database&lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hive.metastore.uris&lt;/name&gt;
+    &lt;value&gt;thrift://127.0.0.1:9083&lt;/value&gt;
+    &lt;description&gt;Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.&lt;/description&gt;
+  &lt;/property&gt;
+  ...
+  ...
+</code></pre>
 
