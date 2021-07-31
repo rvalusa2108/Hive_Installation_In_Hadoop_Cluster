@@ -1607,6 +1607,7 @@ Initialization script hive-schema-2.3.0.mysql.sql
 Initialization script completed
 schemaTool completed
 </code></pre>
+<h2 id="verify-the-schema-in-mysql-cli">Verify the Schema in MySQL CLI</h2>
 <p>Now check the tables created in hive_metastore db in mysql which will be used for storing the metadata of hive table schema.</p>
 <pre><code>[hdpusr@masternode conf]$ mysql -u root
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -1695,5 +1696,34 @@ mysql&gt; show tables;
 | WRITE_SET                 |
 +---------------------------+
 57 rows in set (0.00 sec)
+</code></pre>
+<h2 id="start-hiveserver2-service">Start HiveServer2 Service</h2>
+<p>Start the metastore and hiveserver2 services using the below commands.</p>
+<pre><code>$HIVE_HOME/bin/hive --service metastore &amp;  
+$HIVE_HOME/bin/hive --service hiveserver2 &amp;
+
+[hdpusr@masternode conf]$ $HIVE_HOME/bin/hive --service metastore &amp;
+[1] 197101
+2021-07-29 06:43:50: Starting Hive Metastore Server
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/apps/apache-hive-2.3.9-bin/lib/log4j-slf4j-impl-2.6.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/apps/hadoop-2.7.7/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+[hdpusr@masternode conf]$ ps -ef|grep metastore
+hdpusr    197101  133179 61 06:43 pts/1    00:00:36 /usr/lib/jvm/jdk/bin/java -Xmx256m -Djava.library.path=/apps/hadoop/lib/native -Djava.net.preferIPv4Stack=true -Dhadoop.log.dir=/apps/hadoop-2.7.7/logs -Dhadoop.log.file=hadoop.log -Dhadoop.home.dir=/apps/hadoop-2.7.7 -Dhadoop.id.str=hdpusr -Dhadoop.root.logger=INFO,console -Dhadoop.policy.file=hadoop-policy.xml -Djava.net.preferIPv4Stack=true -Xmx512m -Dproc_metastore -Dlog4j.configurationFile=hive-log4j2.properties -Djava.util.logging.config.file=/apps/hive/conf/parquet-logging.properties -Dhadoop.security.logger=INFO,NullAppender org.apache.hadoop.util.RunJar /apps/hive/lib/hive-metastore-2.3.9.jar org.apache.hadoop.hive.metastore.HiveMetaStore
+hdpusr    197544  133179  0 06:44 pts/1    00:00:00 grep --color=auto metastore
+[hdpusr@masternode conf]$ $HIVE_HOME/bin/hive --service hiveserver2 &amp;
+[2] 198007
+[hdpusr@masternode conf]$ which: no hbase in (/home/hdpusr/.local/bin:/home/hdpusr/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/jvm/jdk/bin:/apps/hadoop/bin:/apps/hadoop/sbin:/apps/spark/bin:/usr/bin:/apps/spark/bin:/apps/spark/sbin:/apps/hive/bin)
+2021-07-29 06:46:06: Starting HiveServer2
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/apps/apache-hive-2.3.9-bin/lib/log4j-slf4j-impl-2.6.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/apps/hadoop-2.7.7/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+[hdpusr@masternode conf]$ ps -ef|grep hiveserver2
+hdpusr    198007  133179 54 06:46 pts/1    00:00:18 /usr/lib/jvm/jdk/bin/java -Xmx256m -Djava.library.path=/apps/hadoop/lib/native -Djava.net.preferIPv4Stack=true -Dhadoop.log.dir=/apps/hadoop-2.7.7/logs -Dhadoop.log.file=hadoop.log -Dhadoop.home.dir=/apps/hadoop-2.7.7 -Dhadoop.id.str=hdpusr -Dhadoop.root.logger=INFO,console -Dhadoop.policy.file=hadoop-policy.xml -Djava.net.preferIPv4Stack=true -Xmx512m -Dproc_hiveserver2 -Dlog4j.configurationFile=hive-log4j2.properties -Djava.util.logging.config.file=/apps/hive/conf/parquet-logging.properties -Djline.terminal=jline.UnsupportedTerminal -Dhadoop.security.logger=INFO,NullAppender org.apache.hadoop.util.RunJar /apps/hive/lib/hive-service-2.3.9.jar org.apache.hive.service.server.HiveServer2
+hdpusr    198279  133179  0 06:46 pts/1    00:00:00 grep --color=auto hiveserver2
 </code></pre>
 
