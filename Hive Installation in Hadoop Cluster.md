@@ -1725,4 +1725,32 @@ SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
 hdpusr    198007  133179 54 06:46 pts/1    00:00:18 /usr/lib/jvm/jdk/bin/java -Xmx256m -Djava.library.path=/apps/hadoop/lib/native -Djava.net.preferIPv4Stack=true -Dhadoop.log.dir=/apps/hadoop-2.7.7/logs -Dhadoop.log.file=hadoop.log -Dhadoop.home.dir=/apps/hadoop-2.7.7 -Dhadoop.id.str=hdpusr -Dhadoop.root.logger=INFO,console -Dhadoop.policy.file=hadoop-policy.xml -Djava.net.preferIPv4Stack=true -Xmx512m -Dproc_hiveserver2 -Dlog4j.configurationFile=hive-log4j2.properties -Djava.util.logging.config.file=/apps/hive/conf/parquet-logging.properties -Djline.terminal=jline.UnsupportedTerminal -Dhadoop.security.logger=INFO,NullAppender org.apache.hadoop.util.RunJar /apps/hive/lib/hive-service-2.3.9.jar org.apache.hive.service.server.HiveServer2
 hdpusr    198279  133179  0 06:46 pts/1    00:00:00 grep --color=auto hiveserver2
 </code></pre>
+<p>Now try launching the Hive CLI as below and noticed that it is throwing the error.</p>
+<p>[hdpusr@masternode conf]$ hive<br>
+which: no hbase in (/home/hdpusr/.local/bin:/home/hdpusr/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/jvm/jdk/bin:/apps/hadoop/bin:/apps/hadoop/sbin:/apps/spark/bin:/usr/bin:/apps/spark/bin:/apps/spark/sbin:/apps/hive/bin)<br>
+SLF4J: Class path contains multiple SLF4J bindings.<br>
+SLF4J: Found binding in [jar:file:/apps/apache-hive-2.3.9-bin/lib/log4j-slf4j-impl-2.6.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]<br>
+SLF4J: Found binding in [jar:file:/apps/hadoop-2.7.7/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]<br>
+SLF4J: See <a href="http://www.slf4j.org/codes.html#multiple_bindings">http://www.slf4j.org/codes.html#multiple_bindings</a> for an explanation.<br>
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]<br>
+Logging initialized using configuration in file:/apps/apache-hive-2.3.9-bin/conf/hive-log4j2.properties Async: true<br>
+Exception in thread “main” java.lang.IllegalArgumentException: java.net.URISyntaxException: Relative path in absolute URI: <span class="katex--inline">KaTeX parse error: Expected '}', got 'EOF' at end of input: …a.io.tmpdir%7D/</span>%7Bsystem:user.name%7D<br>
+at org.apache.hadoop.fs.Path.initialize(Path.java:205)<br>
+at org.apache.hadoop.fs.Path.(Path.java:171)<br>
+at org.apache.hadoop.hive.ql.session.SessionState.createSessionDirs(SessionState.java:663)<br>
+at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:586)<br>
+at org.apache.hadoop.hive.ql.session.SessionState.beginStart(SessionState.java:553)<br>
+at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:750)<br>
+at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:686)<br>
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br>
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>
+at java.lang.reflect.Method.invoke(Method.java:498)<br>
+at org.apache.hadoop.util.RunJar.run(RunJar.java:226)<br>
+at org.apache.hadoop.util.RunJar.main(RunJar.java:141)<br>
+Caused by: java.net.URISyntaxException: Relative path in absolute URI: <span class="katex--inline">KaTeX parse error: Expected '}', got 'EOF' at end of input: …a.io.tmpdir%7D/</span>%7Bsystem:user.name%7D<br>
+at java.net.URI.checkPath(URI.java:1823)<br>
+at java.net.URI.(URI.java:745)<br>
+at org.apache.hadoop.fs.Path.initialize(Path.java:202)<br>
+… 12 more</p>
 
