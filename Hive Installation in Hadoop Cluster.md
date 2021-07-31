@@ -1443,16 +1443,16 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql&gt; create database hive_metastore;
 Query OK, 1 row affected (0.02 sec)    
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| hive_metastore     |
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-5 rows in set (0.00 sec)
+   mysql&gt; show databases;
+   +--------------------+
+   | Database           |
+   +--------------------+
+   | hive_metastore     |
+   | information_schema |
+   | mysql              |
+   | performance_schema |
+   | sys                |
+   +--------------------+
+   5 rows in set (0.00 sec)
 </code></pre>
 
