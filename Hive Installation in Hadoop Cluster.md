@@ -1540,11 +1540,14 @@ hive.exec.scratchdir: This is the temporary data file location. By default, it i
 </code></pre>
 <p>To configure the metastore on other databases, the following parameters should be configured in hive-site.xml:</p>
 <ul>
-<li>javax.jdo.option.ConnectionURL: This is the JDBC URL database</li>
-<li>javax.jdo.option.ConnectionDriverName: This is the JDBC driver class name</li>
+<li>javax.jdo.option.ConnectionURL: This is the JDBC URL database -<br>
+<strong>jdbc:mysql://localhost/hive_metastore</strong></li>
+<li>javax.jdo.option.ConnectionDriverName: This is the JDBC driver class name - <strong>com.mysql.cj.jdbc.Driver</strong> -<br>
+<a href="https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-driver-name.html">https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-driver-name.html</a></li>
 <li>javax.jdo.option.ConnectionUserName: This is the username used to<br>
-access the database</li>
-<li>javax.jdo.option.ConnectionPassword: This is the password used to<br>
-access the database</li>
+access the database - <strong>hive</strong></li>
+<li>javax.jdo.option.ConnectionPassword: This    is the password used to<br>
+access the database - <strong>hive</strong></li>
+<li>hive.metastore.uris: <strong>thrift://127.0.0.1:9083</strong></li>
 </ul>
 
