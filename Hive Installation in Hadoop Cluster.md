@@ -1440,9 +1440,8 @@ affiliates. Other names may be trademarks of their respective
 owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
 mysql&gt; create database hive_metastore;
-Query OK, 1 row affected (0.02 sec)    
+Query OK, 1 row affected (0.02 sec)
 mysql&gt; show databases;
 +--------------------+
 | Database           |
