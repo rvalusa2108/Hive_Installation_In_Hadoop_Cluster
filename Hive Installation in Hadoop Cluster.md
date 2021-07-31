@@ -1411,15 +1411,11 @@ Jul 29 02:26:27 masternode systemd[1]: Started MySQL 8.0 database server.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 10
 Server version: 8.0.21 Source distribution
-
 Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
-
 Oracle is a registered trademark of Oracle Corporation and/or its
 affiliates. Other names may be trademarks of their respective
 owners.
-
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
 mysql&gt;
 mysql&gt; CREATE USER 'hive'@'localhost' IDENTIFIED BY 'hive' password expire never;
 Query OK, 0 rows affected (0.03 sec)
@@ -1432,13 +1428,10 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 11
 Server version: 8.0.21 Source distribution
-
 Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
-
 Oracle is a registered trademark of Oracle Corporation and/or its
 affiliates. Other names may be trademarks of their respective
 owners.
-
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql&gt; create database hive_metastore;
 Query OK, 1 row affected (0.02 sec)
