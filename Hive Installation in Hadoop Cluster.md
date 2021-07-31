@@ -1447,4 +1447,5 @@ mysql&gt; show databases;
 +--------------------+
 5 rows in set (0.00 sec)
 </code></pre>
+<h2 id="configure-hive-metastore">Configure Hive Metastore</h2>
 
