@@ -1406,4 +1406,54 @@ Created symlink /etc/systemd/system/multi-user.target.wants/mysqld.service → /
 Jul 29 02:26:26 masternode systemd[1]: Starting MySQL 8.0 database server...
 Jul 29 02:26:27 masternode systemd[1]: Started MySQL 8.0 database server.
 </code></pre>
+<p>Create Hive User and Hive metastore database in MySQL which will be used to configure MySQL DB as metastore for Hive.</p>
+<pre><code>[root@masternode ~]# mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.21 Source distribution
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt;
+mysql&gt; CREATE USER 'hive'@'localhost' IDENTIFIED BY 'hive' password expire never;
+Query OK, 0 rows affected (0.03 sec)
+mysql&gt; GRANT ALL ON *.* TO 'hive'@'localhost';
+Query OK, 0 rows affected (0.05 sec)
+mysql&gt; exit
+Bye
+[root@masternode ~]# mysql -u hive -phive
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.21 Source distribution
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt; create database hive_metastore;
+Query OK, 1 row affected (0.02 sec)
+
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| hive_metastore     |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+</code></pre>
 
